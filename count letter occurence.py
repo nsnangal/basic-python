@@ -1,5 +1,5 @@
 from collections import defaultdict
-def word_counts(sentense):
+def word_counts(sentense) :
     fsentence=sentense.lower().strip(".,?!")
     word_dic={}
     for word in fsentence.replace(" ",""):

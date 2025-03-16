@@ -1,9 +1,10 @@
+
 from collections import defaultdict
-import pprint,os
+import pprint,os,re
 phonebook=defaultdict(list)
 def add():
   while True:
-
+     
      name=input("Enter your name\n")
      check=name
      if check.replace(" ","").isalpha()==False:
@@ -15,9 +16,15 @@ def add():
   while True:
 
       ph_no=input("Enter your phone number\n")
-      if ph_no.strip().isdigit()==False:
+      checkmobile=re.compile(r'\d{10}')
+      chmo=checkmobile.search(ph_no)
+      if chmo==None:
+        continue
+
+      mobilelen=chmo.group()
+      if ph_no.strip().isdigit()==False  :
        print("please enter numbers only only:")
-      elif ph_no.strip().isdigit()==True:
+      elif ph_no.strip().isdigit()==True and mobilelen==ph_no:
          break
 
   phonebook['name'].append(name)
